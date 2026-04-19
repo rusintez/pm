@@ -20,6 +20,7 @@ archives:
 
 brews:
   - name: pm
+    directory: Formula
     repository:
       owner: rusintez
       name: homebrew-tap
