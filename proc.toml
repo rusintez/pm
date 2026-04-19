@@ -1,0 +1,10 @@
+[processes]
+api    = { cmd = "bun run src/api/index.ts" }
+db     = { cmd = "docker compose up db" }
+ui     = { cmd = "bun run --hot src/ui/index.ts" }
+worker = { cmd = "bun run src/worker.ts", env = { QUEUE = "default" } }
+
+[layouts]
+backend = { processes = ["api", "db"] }
+dev     = { processes = ["api", "db", "ui"], env = { NODE_ENV = "development" } }
+full    = { processes = ["api", "db", "ui", "worker"], env = { NODE_ENV = "production" } }
